@@ -20,7 +20,7 @@ public class Main extends PApplet
 	}
 	
 	int characterX, characterY;
-	int landscapeX;
+	static public int landscapeX;
 	
 	PImage background;
 	
@@ -43,7 +43,8 @@ public class Main extends PApplet
 	@Override
 	public void draw() //void Update
 	{
-		System.out.println(mouseX + ", " + mouseY);
+		//System.out.println(mouseX + ", " + mouseY);
+		System.out.println(landscapeX);
 		image(background, landscapeX, -1300);
 		fill(90);
 		noStroke();
@@ -73,6 +74,11 @@ public class Main extends PApplet
 	public void keyReleased()
 	{
 		controls.keyMovement(this);
+	}
+	
+	public void parallax()
+	{
+		
 	}
 	
 	public void keyPressed()

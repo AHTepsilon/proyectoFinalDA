@@ -1,6 +1,7 @@
 package model;
 
 import processing.core.PApplet;
+import view.Main;
 
 public class Player 
 {
@@ -19,7 +20,7 @@ public class Player
 
 	public Player() 
 	{
-		posX = 31;
+		posX = 132;
 		posY = 324;
 		velocityX = 0;
 		velocityY = 0;
@@ -71,6 +72,18 @@ public class Player
 		if(posX > 669)
 		{
 			posX = 669;
+			
+			Main.landscapeX -= speed;
+		}
+		
+		if(posX < 131)
+		{
+			posX = 132;
+			
+			if(Main.landscapeX <= 0)
+			{
+				Main.landscapeX += speed;
+			}
 		}
 	}
 	
@@ -135,6 +148,64 @@ public class Player
 			}
 		}
 	}
+
+	public float getPosX() {
+		return posX;
+	}
+
+	public void setPosX(float posX) {
+		this.posX = posX;
+	}
+
+	public float getPosY() {
+		return posY;
+	}
+
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+
+	public float getVelocityX() {
+		return velocityX;
+	}
+
+	public void setVelocityX(float velocityX) {
+		this.velocityX = velocityX;
+	}
+
+	public float getVelocityY() {
+		return velocityY;
+	}
+
+	public void setVelocityY(float velocityY) {
+		this.velocityY = velocityY;
+	}
+
+	public float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(float speed) {
+		this.speed = speed;
+	}
+
+	public float getJumpVel() {
+		return jumpVel;
+	}
+
+	public void setJumpVel(float jumpVel) {
+		this.jumpVel = jumpVel;
+	}
+
+	public double getGravity() {
+		return gravity;
+	}
+
+	public void setGravity(double gravity) {
+		this.gravity = gravity;
+	}
+	
+	
 	
 	
 
