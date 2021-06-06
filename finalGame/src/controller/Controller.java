@@ -1,13 +1,15 @@
 package controller;
 
 import model.Player;
+import model.startScreen;
 import processing.core.PApplet;
 
 public class Controller 
 {
 	Player player;
-	
+	startScreen screenOne;
 	PApplet app;
+	
 
 	public Controller() 
 	{
@@ -42,6 +44,16 @@ public class Controller
 	public void keyPress(PApplet app)
 	{
 		player.keyPress(app);
+	}
+	
+	public void runPlayer()
+	{
+		player.start();
+	}
+	
+	public void loadStage1(PApplet app)
+	{
+		screenOne.loadStage(app);
 	}
 
 }

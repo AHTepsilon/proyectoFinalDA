@@ -3,7 +3,7 @@ package model;
 import processing.core.PApplet;
 import view.Main;
 
-public class Player 
+public class Player extends Thread
 {
 	float posX, posY;
 	float velocityX, velocityY;
@@ -11,6 +11,8 @@ public class Player
 	float jumpVel;
 	double gravity;
 	boolean onGround;
+	
+	int jumpable;
 	
 	int size;
 	
@@ -29,6 +31,22 @@ public class Player
 		gravity = 1.8;
 		
 		size = 25;
+		
+		jumpable = 1;
+	}
+	
+	public void run()
+	{
+		jumpable *= -1;
+		
+		try {
+			Player.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		jumpable *= -1;
 	}
 	
 	@SuppressWarnings("static-access")
@@ -61,6 +79,8 @@ public class Player
 	
 	public void collisions(PApplet app)
 	{
+		System.out.println(jumpable);
+		
 		if(posY > (351-(size/2)))
 			{
 				posY = (350-(size/2));
@@ -139,7 +159,11 @@ public class Player
 			{
 				upKey = 1;
 				System.out.println("jumps");
-				posY -= 200;
+				
+				if(jumpable == 1)
+				{
+					posY -= 200;
+				}
 			}
 			
 			if(app.keyCode == app.DOWN)

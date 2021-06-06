@@ -21,6 +21,7 @@ public class Main extends PApplet
 	
 	int characterX, characterY;
 	static public int landscapeX;
+	static public int stageNum;
 	
 	PImage background;
 	
@@ -33,23 +34,37 @@ public class Main extends PApplet
 		
 		background = loadImage("land.jpg");
 		landscapeX = 0;
+		stageNum = 0;
 		
 		characterX = 31;
 		characterY = 324;
 		
 		controls = new Controller();
+		
+		if(keyPressed)
+		{
+			if(key == CODED)
+			{
+				if(keyCode == UP)
+				{
+					controls.runPlayer();
+				}
+			}
+		}
+		
 	}
 	
 	@Override
 	public void draw() //void Update
 	{
 		//System.out.println(mouseX + ", " + mouseY);
-		System.out.println(landscapeX);
 		image(background, landscapeX, -1300);
 		fill(90);
 		noStroke();
 		rectMode(CORNER);
 		rect(0, 352, 800, 400);
+		
+		//loadStages();
 		
 		controls.drawPlayer(this);
 		controls.movement(this);
@@ -61,19 +76,19 @@ public class Main extends PApplet
 		square(characterX, characterY, 25);*/
 	}
 	
-	public void gravity()
-	{
-		
-	}
-	
-	public void move()
-	{
-		
-	}
-	
 	public void keyReleased()
 	{
 		controls.keyMovement(this);
+	}
+	
+	public void loadStages() 
+	{
+		switch(stageNum)
+		{
+		case 0:
+			controls.loadStage1(this);
+			break;
+		}
 	}
 	
 	public void parallax()
@@ -84,6 +99,11 @@ public class Main extends PApplet
 	public void keyPressed()
 	{
 		controls.keyPress(this);
+	}
+	
+	public void mousePressed()
+	{
+		
 	}
 
 }
