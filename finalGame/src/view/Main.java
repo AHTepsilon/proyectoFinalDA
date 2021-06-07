@@ -64,12 +64,17 @@ public class Main extends PApplet
 		
 		loadStages();
 		
-		if(stageNum == 1)
+		switch(stageNum)
 		{
+		case 0:
+			
+			break;
+		case 1:
 			controls.drawPlayer(this);
 			controls.movement(this);
 			controls.collision(this);
 			controls.parallax(this);
+			break;
 		}
 		
 		/*rectMode(CENTER);
@@ -84,14 +89,14 @@ public class Main extends PApplet
 	
 	public void loadStages() 
 	{
-		if(stageNum == 0)
+		switch(stageNum)
 		{
+		case 0:
 			controls.loadStage1(this);
-		}
-		
-		if(stageNum == 1)
-		{
+			break;
+		case 1:
 			controls.loadStage2(this);
+			break;
 		}
 	}
 	
