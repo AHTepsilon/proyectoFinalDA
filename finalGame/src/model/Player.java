@@ -79,7 +79,7 @@ public class Player extends Thread
 	
 	public void collisions(PApplet app)
 	{
-		System.out.println(jumpable);
+		//System.out.println(jumpable);
 		
 		if(posY > (351-(size/2)))
 			{
