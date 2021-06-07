@@ -1,9 +1,20 @@
 package model;
 
-public class SecondStage {
+import processing.core.PApplet;
 
-	public SecondStage() {
-		// TODO Auto-generated constructor stub
+public class SecondStage extends stages
+{
+
+	public SecondStage() 
+	{
+		
+	}
+
+	@Override
+	public void loadStage(PApplet app) 
+	{
+		
+		
 	}
 
 }

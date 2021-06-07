@@ -1,6 +1,7 @@
 package controller;
 
 import model.Player;
+import model.stages;
 import model.startScreen;
 import processing.core.PApplet;
 
@@ -11,9 +12,10 @@ public class Controller
 	PApplet app;
 	
 
-	public Controller() 
+	public Controller(PApplet app) 
 	{
 		player = new Player();
+		screenOne = new startScreen(app);
 	}
 	
 	public void drawPlayer(PApplet app)
@@ -53,7 +55,7 @@ public class Controller
 	
 	public void loadStage1(PApplet app)
 	{
-		screenOne.loadStage(app);
+		screenOne.stageLoader(app);
 	}
 
 }

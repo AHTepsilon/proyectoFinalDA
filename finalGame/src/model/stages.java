@@ -5,8 +5,8 @@ import processing.core.PImage;
 
 public abstract class stages 
 {
-	//static public int landscapeX;
-	//PImage tilemap;
+	static public int landscapeX;
+	PImage tilemap;
 	PApplet app;
 	
 	public stages() 

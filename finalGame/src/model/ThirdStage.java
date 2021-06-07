@@ -1,9 +1,20 @@
 package model;
 
-public class ThirdStage {
+import processing.core.PApplet;
 
-	public ThirdStage() {
-		// TODO Auto-generated constructor stub
+public class ThirdStage extends stages
+{
+
+	public ThirdStage() 
+	{
+		
+	}
+
+	@Override
+	public void loadStage(PApplet app) 
+	{
+		
+		
 	}
 
 }

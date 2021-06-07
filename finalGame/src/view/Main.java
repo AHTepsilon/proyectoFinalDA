@@ -39,7 +39,7 @@ public class Main extends PApplet
 		characterX = 31;
 		characterY = 324;
 		
-		controls = new Controller();
+		controls = new Controller(this);
 		
 		if(keyPressed)
 		{
@@ -59,12 +59,10 @@ public class Main extends PApplet
 	{
 		//System.out.println(mouseX + ", " + mouseY);
 		image(background, landscapeX, -1300);
-		fill(90);
 		noStroke();
 		rectMode(CORNER);
-		rect(0, 352, 800, 400);
 		
-		//loadStages();
+		loadStages();
 		
 		controls.drawPlayer(this);
 		controls.movement(this);
@@ -83,11 +81,9 @@ public class Main extends PApplet
 	
 	public void loadStages() 
 	{
-		switch(stageNum)
+		if(stageNum == 0)
 		{
-		case 0:
 			controls.loadStage1(this);
-			break;
 		}
 	}
 	
@@ -95,7 +91,7 @@ public class Main extends PApplet
 	{
 		
 	}
-	
+	 
 	public void keyPressed()
 	{
 		controls.keyPress(this);
