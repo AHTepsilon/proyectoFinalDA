@@ -58,7 +58,7 @@ public class Main extends PApplet
 	@Override
 	public void draw() //void Update
 	{
-		//System.out.println(landscapeX);
+		System.out.println(mouseX + ", " + mouseY);
 		//image(background, landscapeX, -1300);
 		noStroke();
 		rectMode(CORNER);

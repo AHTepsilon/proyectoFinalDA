@@ -22,8 +22,6 @@ public class FirstStage extends stages
 	public void loadStage(PApplet app) 
 	{
 		app.image(background, 0, 0);
-		System.out.println(Main.subStageNum);
-		System.out.println(Player.posX);
 		
 		if(Player.posX > 817)
 		{

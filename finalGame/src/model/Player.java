@@ -79,23 +79,26 @@ public class Player extends Thread
 	
 	public void obstacles()
 	{
-		if(Main.landscapeX >= -490 && Main.landscapeX <= -1120 && Main.stageNum == 1)
-		{
-			if(Player.posX == Main.landscapeX + 1159)
-			{
-				velocityY += gravity;
-			}
-		}
+		
 	}
 	
 	public void collisions(PApplet app)
 	{
 		//System.out.println(jumpable);
 		
-		if(posY > (351-(size/2)))
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 0)
 			{
 				posY = (350-(size/2));
 			}
+		
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && posX < 359 || posX > 565)
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && posX < 359 || posX > 565)
+		{
+			posY = (350-(size/2));
+		}
 	}
 	
 	public void parallax(PApplet app)
