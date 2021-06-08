@@ -18,12 +18,24 @@ public class Player extends Thread
 	
 	float upKey, leftKey, rightKey, downKey;
 	
+	
+	
+	
+	
+	boolean subiendo,saltoBloqueado, colisionAbajo;
+	int saltoYinicial, frameAereosMaximos, framesAereos, velocidadY, velocidadMovimiento;
+	
+	int velocidadTerminal, velocidadCaida;
+	
+	
 	PApplet app;	
 
 	public Player() 
 	{
 		posX = 132;
 		posY = 324;
+		
+		
 		velocityX = 0;
 		velocityY = 0;
 		speed = 5;
@@ -33,6 +45,27 @@ public class Player extends Thread
 		size = 25;
 		
 		jumpable = 1;
+		
+		subiendo= false;  //si gana altura
+		saltoBloqueado= false; //para no saltar infinitamente
+		saltoYinicial=0; //altura para saltar
+		frameAereosMaximos=12; //cuanto va a saltar
+		framesAereos= frameAereosMaximos;  //cuanto lleva saltando
+		
+		velocidadTerminal=10; //velocidad en que cae el personaje
+		velocidadCaida=0; //para que el personaje caiga mas rapido
+		velocidadMovimiento=12;
+		
+		velocidadY=0;
+		
+		if(posY == 324) {
+			colisionAbajo=true;
+		} else {
+			colisionAbajo=false;
+		}
+		
+		
+		
 	}
 	
 	public void run()
@@ -157,12 +190,45 @@ public class Player extends Thread
 			if(app.keyCode == app.UP)
 			{
 				upKey = 1;
+				saltoBloqueado=false;
+				velocidadCaida=0;
 				System.out.println("jumps");
 				
-				if(jumpable == 1)
-				{
-					posY -= 200;
+//				if(jumpable == 1)
+//				{
+//					posY -= 200;
+//				}
+				
+				if(saltoBloqueado==false && app.keyCode == app.UP ) {
+					subiendo=true;
+					saltoBloqueado=true;
 				}
+				
+				if(subiendo) {
+					
+					framesAereos--;
+					posY= 1*velocidadMovimiento+framesAereos;
+					
+				}
+				if (framesAereos<=0)
+				{
+					subiendo=false;
+					framesAereos=frameAereosMaximos;
+				}	
+				
+				if(colisionAbajo==false && subiendo == false) {
+					posY= (int) --velocidadCaida;
+					System.out.println(velocidadY);
+					if(velocidadCaida <velocidadTerminal) {
+						velocidadCaida+=0.3;
+					}
+				}
+				
+				
+				
+				
+				
+				
 			}
 			
 			if(app.keyCode == app.DOWN)
