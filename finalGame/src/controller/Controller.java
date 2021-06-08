@@ -56,6 +56,11 @@ public class Controller
 		player.start();
 	}
 	
+	public void obstacles()
+	{
+		player.obstacles();
+	}
+	
 	public void loadStage1(PApplet app)
 	{
 		screenOne.loadStage(app);
@@ -64,6 +69,7 @@ public class Controller
 	public void loadStage2(PApplet app)
 	{
 		stageOne.loadStage(app);
+		stageOne.switchSubStage();
 	}
 
 }

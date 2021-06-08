@@ -5,7 +5,7 @@ import view.Main;
 
 public class Player extends Thread
 {
-	float posX, posY;
+	public static float posX, posY;
 	float velocityX, velocityY;
 	float speed;
 	float jumpVel;
@@ -77,6 +77,17 @@ public class Player extends Thread
 
 	}
 	
+	public void obstacles()
+	{
+		if(Main.landscapeX >= -490 && Main.landscapeX <= -1120 && Main.stageNum == 1)
+		{
+			if(Player.posX == Main.landscapeX + 1159)
+			{
+				velocityY += gravity;
+			}
+		}
+	}
+	
 	public void collisions(PApplet app)
 	{
 		//System.out.println(jumpable);
@@ -89,22 +100,7 @@ public class Player extends Thread
 	
 	public void parallax(PApplet app)
 	{
-		if(posX > 669)
-		{
-			posX = 669;
-			
-			Main.landscapeX -= speed;
-		}
 		
-		if(posX < 131)
-		{
-			posX = 132;
-			
-			if(Main.landscapeX <= 0)
-			{
-				Main.landscapeX += speed;
-			}
-		}
 	}
 	
 	

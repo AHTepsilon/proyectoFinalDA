@@ -21,7 +21,7 @@ public class Main extends PApplet
 	
 	int characterX, characterY;
 	static public int landscapeX;
-	static public int stageNum;
+	static public int stageNum, subStageNum;
 	
 	//PImage background;
 	
@@ -35,6 +35,7 @@ public class Main extends PApplet
 		//background = loadImage("land.jpg");
 		landscapeX = 0;
 		stageNum = 0;
+		subStageNum = 0;
 		
 		characterX = 31;
 		characterY = 324;
@@ -57,7 +58,7 @@ public class Main extends PApplet
 	@Override
 	public void draw() //void Update
 	{
-		System.out.println(mouseX + ", " + mouseY);
+		//System.out.println(landscapeX);
 		//image(background, landscapeX, -1300);
 		noStroke();
 		rectMode(CORNER);
