@@ -1,6 +1,7 @@
 package model;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import view.Main;
 
 public class Player extends Thread
@@ -18,15 +19,12 @@ public class Player extends Thread
 	
 	float upKey, leftKey, rightKey, downKey;
 	
-	
-	
-	
-	
 	boolean subiendo,saltoBloqueado, colisionAbajo;
 	int saltoYinicial, frameAereosMaximos, framesAereos, velocidadY, velocidadMovimiento;
 	
 	int velocidadTerminal, velocidadCaida;
 	
+	PImage siamese, calico, blackCat, garfield;
 	
 	PApplet app;	
 
@@ -63,9 +61,6 @@ public class Player extends Thread
 		} else {
 			colisionAbajo=false;
 		}
-		
-		
-		
 	}
 	
 	public void run()
@@ -117,20 +112,19 @@ public class Player extends Thread
 	
 	public void collisions(PApplet app)
 	{
-		//System.out.println(jumpable);
+		System.out.println(posX);
 		
-		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 0)
-			{
-				posY = (350-(size/2));
-			}
-		
-		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && posX < 359 || posX > 565)
+		if(posY > (351-(size/2)))
 		{
 			posY = (350-(size/2));
 		}
-		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && posX < 359 || posX > 565)
+		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && posX > 359 && posX < 565)
 		{
-			posY = (350-(size/2));
+			posY += gravity;
+		}
+		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && posX > 359 && posX < 565)
+		{
+			posY += gravity;
 		}
 	}
 	

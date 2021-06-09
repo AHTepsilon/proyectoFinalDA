@@ -7,7 +7,7 @@ import view.Main;
 public class FirstStage extends stages
 {
 	PApplet app;
-	PImage background, floor, smallGap, smallGapWater;
+	PImage background, floor, smallGap, smallGapWater, longGap;
 
 	public FirstStage(PApplet app) 
 	{
@@ -15,7 +15,7 @@ public class FirstStage extends stages
 		floor = app.loadImage("floor.gif");
 		smallGap = app.loadImage("smallGap.gif");
 		smallGapWater = app.loadImage("water.gif");
-		
+		longGap = app.loadImage("longGap.gif");
 	}
 
 	@Override
@@ -33,6 +33,10 @@ public class FirstStage extends stages
 				break;
 			case 1:
 				Main.subStageNum = 2;
+				Player.posX = 0;
+				break;
+			case 2:
+				Main.subStageNum = 3;
 				Player.posX = 0;
 				break;
 			}
@@ -53,6 +57,10 @@ public class FirstStage extends stages
 				Main.subStageNum = 1;
 				Player.posX = 790;
 				break;
+			case 3:
+				Main.subStageNum = 2;
+				Player.posX = 790;
+				break;
 			}
 		}
 	
@@ -66,6 +74,9 @@ public class FirstStage extends stages
 			break;
 		case 2:
 			app.image(smallGapWater, 0, -100);
+			break;
+		case 3:
+			app.image(longGap, 0, -100);
 			break;
 		}
 		
