@@ -16,7 +16,7 @@ public class Controller
 
 	public Controller(PApplet app) 
 	{
-		player = new Player();
+		player = new Player(app);
 		screenOne = new startScreen(app);
 		stageOne = new FirstStage(app);
 	}

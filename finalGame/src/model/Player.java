@@ -24,11 +24,12 @@ public class Player extends Thread
 	
 	int velocidadTerminal, velocidadCaida;
 	
-	PImage siamese, calico, blackCat, garfield;
+	PImage siamese, calico, blackCat, ginger, garfield;
+	int randomCatValue;
 	
 	PApplet app;	
 
-	public Player() 
+	public Player(PApplet app) 
 	{
 		posX = 132;
 		posY = 324;
@@ -39,6 +40,8 @@ public class Player extends Thread
 		speed = 5;
 		jumpVel = 5;
 		gravity = 1.8;
+		
+		randomCatValue = (int)app.random(0, 4);
 		
 		size = 25;
 		
@@ -55,6 +58,12 @@ public class Player extends Thread
 		velocidadMovimiento=12;
 		
 		velocidadY=0;
+		
+		siamese = app.loadImage("catSiamese.gif");
+		calico = app.loadImage("catCalico.gif");
+		blackCat = app.loadImage("catBlack.gif");
+		ginger = app.loadImage("catGinger.gif");
+		garfield = app.loadImage("catGarfield.gif");
 		
 		if(posY == 324) {
 			colisionAbajo=true;
@@ -81,13 +90,45 @@ public class Player extends Thread
 	public void drawPlayer(PApplet app)
 	{	
 		app.rectMode(app.CENTER);
-		app.fill(255, 0, 0);
-		app.square(posX, posY, size);
+		app.imageMode(app.CENTER);
+		
+		switch(randomCatValue)
+		{
+		case 0:
+			app.image(siamese, posX, posY);
+			siamese.resize(0, 100);
+			break;
+		case 1:
+			app.image(ginger, posX, posY);
+			ginger.resize(0,  100);
+			break;
+		case 2:
+			app.image(blackCat, posX, posY);
+			blackCat.resize(0,  100);
+			break;
+		case 3:
+			app.image(calico, posX, posY);
+			calico.resize(0,  100);
+			break;
+		case 4:
+			app.image(garfield, posX, posY);
+			garfield.resize(0,  100);
+			break;
+			
+			//switching the images with random values
+		}
+		
 	}
 	
 	public void movement(PApplet app)
 	{
 		velocityY += gravity;
+		
+		if(velocityY > 100)
+		{
+			velocityY = 99;
+		}
+		
 		velocityX = (rightKey - leftKey) * speed;
 		float nextY = posY + velocityY;
 		float nextX = posX;		
@@ -112,20 +153,20 @@ public class Player extends Thread
 	
 	public void collisions(PApplet app)
 	{
-		System.out.println(posX);
+		System.out.println(velocityY);
 		
 		if(posY > (351-(size/2)))
 		{
 			posY = (350-(size/2));
 		}
-		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && posX > 359 && posX < 565)
+		/*else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && posX > 359 && posX < 565)
 		{
 			posY += gravity;
 		}
 		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && posX > 359 && posX < 565)
 		{
 			posY += gravity;
-		}
+		}*/
 	}
 	
 	public void parallax(PApplet app)
@@ -216,12 +257,7 @@ public class Player extends Thread
 					if(velocidadCaida <velocidadTerminal) {
 						velocidadCaida+=0.3;
 					}
-				}
-				
-				
-				
-				
-				
+				}	
 				
 			}
 			

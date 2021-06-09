@@ -96,22 +96,12 @@ public class Main extends PApplet
 		{
 			ioe.printStackTrace();
 		}
+		catch(NullPointerException npe)
+		{
+			npe.printStackTrace();
+		}
 		
 		clip.start();
-		
-		/*do
-		{
-			try
-			{
-				Thread.sleep(50);
-			}
-			catch(InterruptedException err)
-			{
-				err.printStackTrace();
-			}
-		}*/
-		
-		//while(clip.isActive());
 		
 		controls = new Controller(this);
 		
@@ -135,6 +125,7 @@ public class Main extends PApplet
 		//image(background, landscapeX, -1300);
 		noStroke();
 		rectMode(CORNER);
+		imageMode(CORNER);
 		
 		loadStages();
 		
