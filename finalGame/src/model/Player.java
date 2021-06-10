@@ -25,7 +25,7 @@ public class Player extends Thread
 	int velocidadTerminal, velocidadCaida;
 	
 	PImage siamese, calico, blackCat, ginger, garfield;
-	int randomCatValue;
+	public static int randomCatValue;
 	
 	PApplet app;	
 
@@ -41,7 +41,7 @@ public class Player extends Thread
 		jumpVel = 5;
 		gravity = 1.8;
 		
-		randomCatValue = (int)app.random(0, 4);
+		randomCatValue = (int)app.random(0, 5);
 		
 		size = 25;
 		
@@ -220,7 +220,7 @@ public class Player extends Thread
 				rightKey = 1;
 			}
 			
-			if(app.keyCode == app.UP)
+			if(app.keyCode == app.UP && velocityY > 0)
 			{
 				upKey = 1;
 				saltoBloqueado=false;

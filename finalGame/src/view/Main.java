@@ -1,6 +1,8 @@
 package view;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -12,6 +14,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import controlP5.ControlP5;
 import controller.Controller;
+import model.Items;
 import model.Player;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -40,6 +43,8 @@ public class Main extends PApplet
 	
 	static public boolean gameOver;
 	
+	ArrayList<Items> itemList;
+	
 	//PImage background;
 	
 	Controller controls;
@@ -56,6 +61,13 @@ public class Main extends PApplet
 		
 		characterX = 31;
 		characterY = 324;
+		
+		itemList = new ArrayList<Items>();
+		
+		for(int i = 0; i <= 90; i++)
+		{
+			itemList.add(new Items(this));
+		}
 		
 		Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
 		
@@ -144,7 +156,29 @@ public class Main extends PApplet
 			break;
 		}
 		
+		paintItems();
 		gameOver();
+	}
+	
+	public void paintItems() 
+	{
+		
+		for(int i = 0; i < itemList.size(); i++)
+		{
+			Items actual = itemList.get(i);
+			
+			if(stageNum == 1)
+			{
+				switch(subStageNum)
+				{
+				case 0:
+					actual.paint(this, 450, 245);
+					actual.paint(this, 550, 245);
+					actual.paint(this, 650, 245);
+					break;
+				}
+			}
+		}
 	}
 	
 	public void keyReleased()
