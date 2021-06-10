@@ -153,20 +153,18 @@ public class Player extends Thread
 	
 	public void collisions(PApplet app)
 	{
-		System.out.println(velocityY);
-		
-		if(posY > (351-(size/2)))
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 0)
 		{
 			posY = (350-(size/2));
 		}
-		/*else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && posX > 359 && posX < 565)
+		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && (posX < 359 || posX > 565))
 		{
-			posY += gravity;
+			posY = (350-(size/2));
 		}
-		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && posX > 359 && posX < 565)
+		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && (posX < 359 || posX > 565))
 		{
-			posY += gravity;
-		}*/
+			posY = (350-(size/2));
+		}
 	}
 	
 	public void parallax(PApplet app)
@@ -210,7 +208,7 @@ public class Player extends Thread
 			velocityY = jumpVel;
 		}
 		
-		if(app.key == app.CODED)
+		if(app.key == app.CODED && !Main.gameOver)
 		{
 			if(app.keyCode == app.LEFT)
 			{

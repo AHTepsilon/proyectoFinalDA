@@ -12,6 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import controlP5.ControlP5;
 import controller.Controller;
+import model.Player;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -36,6 +37,8 @@ public class Main extends PApplet
 	int characterX, characterY;
 	static public int landscapeX;
 	static public int stageNum, subStageNum;
+	
+	static public boolean gameOver;
 	
 	//PImage background;
 	
@@ -121,8 +124,7 @@ public class Main extends PApplet
 	@Override
 	public void draw() //void Update
 	{
-		//System.out.println(mouseX + ", " + mouseY);
-		//image(background, landscapeX, -1300);
+		System.out.println(mouseX + ", " + mouseY);
 		noStroke();
 		rectMode(CORNER);
 		imageMode(CORNER);
@@ -142,9 +144,7 @@ public class Main extends PApplet
 			break;
 		}
 		
-		/*rectMode(CENTER);
-		fill(255, 0, 0);
-		square(characterX, characterY, 25);*/
+		gameOver();
 	}
 	
 	public void keyReleased()
@@ -188,6 +188,18 @@ public class Main extends PApplet
 		if(stageNum == 0)
 		{
 			stageNum = 1;
+		}
+	}
+	
+	public void gameOver()
+	{
+		if(Player.posY > 500)
+		{
+			rectMode(CORNER);
+			fill(0);
+			rect(0, 0, 800, 500);
+			clip.stop();
+			gameOver = true;
 		}
 	}
 
