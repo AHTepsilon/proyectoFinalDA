@@ -240,7 +240,7 @@ public class Player extends Thread
 				if(subiendo) {
 					
 					framesAereos--;
-					posY= 1*velocidadMovimiento+framesAereos;
+					velocityY = -20;
 					
 				}
 				if (framesAereos<=0)
