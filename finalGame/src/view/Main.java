@@ -43,6 +43,12 @@ public class Main extends PApplet
 	
 	static public boolean gameOver;
 	
+	PImage gameOverScreen, startScreen, instScreen;
+	
+	boolean isScreenInst;
+	
+	int score;
+	
 	ArrayList<Items> itemList;
 	
 	//PImage background;
@@ -56,11 +62,16 @@ public class Main extends PApplet
 		
 		//background = loadImage("land.jpg");
 		landscapeX = 0;
-		stageNum = 0;
+		stageNum = -1;
 		subStageNum = 0;
+		score = 0;
 		
 		characterX = 31;
 		characterY = 324;
+		
+		gameOverScreen = loadImage("stageThreeBack.png");
+		startScreen = loadImage("startScreen.png");
+		instScreen = loadImage("inst.png");
 		
 		itemList = new ArrayList<Items>();
 		
@@ -145,8 +156,33 @@ public class Main extends PApplet
 		
 		switch(stageNum)
 		{
-		case 0:
+		case -1:
+			startScreen.resize(800, 500);
+			image(startScreen, 0, 0);
 			
+			//584, 328
+			
+			if(mousePressed)
+			{
+				if(mouseX > 584 && mouseX < 703 && mouseY > 328 && mouseY < 372)
+				{
+					stageNum = 0;
+				}
+			}
+			break;
+		case 0:
+			instScreen.resize(800, 500);
+			image(instScreen, 0, 0);
+			
+			//584, 328
+			
+			if(mousePressed)
+			{
+				if(mouseX > 584 && mouseX < 703 && mouseY > 328 && mouseY < 372)
+				{
+					stageNum = 1;
+				}
+			}
 			break;
 		case 1:
 			controls.drawPlayer(this);
@@ -156,7 +192,9 @@ public class Main extends PApplet
 			break;
 		}
 		
+		intface();
 		paintItems();
+		catchItems();
 		gameOver();
 	}
 	
@@ -176,7 +214,24 @@ public class Main extends PApplet
 					actual.paint(this, 550, 245);
 					actual.paint(this, 650, 245);
 					break;
+				case 1:
+					actual.paint(this, 339, 245);
 				}
+			}
+		}
+	}
+	
+	public void catchItems()
+	{
+		for(int i = 0; i < itemList.size(); i++)
+		{
+			Items actual = itemList.get(i);
+			System.out.println(actual.getPosX());
+			
+			if(dist(Player.posX, Player.posY, actual.getPosX(), actual.getPosY()) < 30)
+			{
+				itemList.remove(i);
+				score++;
 			}
 		}
 	}
@@ -215,25 +270,58 @@ public class Main extends PApplet
 				clip2.start();
 			}
 		}
+		
+		if(stageNum == 1)
+		{
+			if(key == '1')
+			{
+				subStageNum = 1;
+			}
+			if(key == '2')
+			{
+				subStageNum = 2;
+			}
+			if(key == '3')
+			{
+				subStageNum = 3;
+			}
+			if(key == '4')
+			{
+				subStageNum = 4;
+			}
+		}
 	}
 	
 	public void mousePressed()
 	{
-		if(stageNum == 0)
-		{
-			stageNum = 1;
-		}
+		
 	}
 	
 	public void gameOver()
 	{
 		if(Player.posY > 500)
 		{
-			rectMode(CORNER);
-			fill(0);
-			rect(0, 0, 800, 500);
+			imageMode(CORNER);
+			image(gameOverScreen, 0, 0);
+			
+			textAlign(CENTER);
+			fill(255);
+			textSize(30);
+			text("Game Over", 400, 200);
+			
 			clip.stop();
 			gameOver = true;
+		}
+	}
+	
+	public void intface()
+	{
+		if(stageNum > 0)
+		{
+			textSize(16);
+			text("stage " + stageNum, 400, 30);
+			text("score " + score, 729, 30);
+			
 		}
 	}
 

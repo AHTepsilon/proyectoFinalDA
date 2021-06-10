@@ -6,11 +6,13 @@ import view.Main;
 
 public class startScreen extends stages
 {
-
+	PApplet app;
+	
+	PImage startScreen;
 
 	public startScreen(PApplet app) 
 	{
-
+		app.loadImage("startScreen");
 	}
 
 	public void loadStage(PApplet app) 

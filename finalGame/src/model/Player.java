@@ -34,10 +34,9 @@ public class Player extends Thread
 		posX = 132;
 		posY = 324;
 		
-		
 		velocityX = 0;
 		velocityY = 0;
-		speed = 5;
+		speed = 9;
 		jumpVel = 5;
 		gravity = 1.8;
 		
@@ -138,11 +137,11 @@ public class Player extends Thread
 		posY += velocityY;
 		onGround = onGroundTemp;
 		
-		if(velocityY > 0 && posY < (351-(size/2)))
+		/*if(velocityY > 0 && posY < (351-(size/2)))
 			{
 				velocityY = 0;
 				onGroundTemp = true;
-			}
+			}*/
 
 	}
 	
@@ -157,14 +156,43 @@ public class Player extends Thread
 		{
 			posY = (350-(size/2));
 		}
-		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && (posX < 359 || posX > 565))
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 1 && (posX < 359 || posX > 565))
 		{
 			posY = (350-(size/2));
 		}
-		else if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && (posX < 359 || posX > 565))
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 2 && (posX < 359 || posX > 565))
 		{
 			posY = (350-(size/2));
 		}
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX < 120 || posX > 773))
+		{
+			posY = (350-(size/2));
+		}
+		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 236 && posX < 284))
+		{
+			posY = (333-(size/2));
+		}
+		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 436 && posX < 484))
+		{
+			posY = (333-(size/2));
+		}
+		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 636 && posX < 684))
+		{
+			posY = (333-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 4 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 5 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 6)
+		{
+			posY = (350-(size/2));
+		}
+		
 	}
 	
 	public void parallax(PApplet app)
@@ -240,7 +268,7 @@ public class Player extends Thread
 				if(subiendo) {
 					
 					framesAereos--;
-					velocityY = -20;
+					velocityY = -25;
 					
 				}
 				if (framesAereos<=0)
