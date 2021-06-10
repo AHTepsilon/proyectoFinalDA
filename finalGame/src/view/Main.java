@@ -310,16 +310,16 @@ public class Main extends PApplet
 	{
 		if(Player.posY > 500)
 		{
-			imageMode(CORNER);
-			image(gameOverScreen, 0, 0);
+				imageMode(CORNER);
+				image(gameOverScreen, 0, 0);
 			
-			textAlign(CENTER);
-			fill(255);
-			textSize(30);
-			text("Game Over", 400, 200);
+				textAlign(CENTER);
+				fill(255);
+				textSize(30);
+				text("Game Over", 400, 200);
 			
-			clip.stop();
-			gameOver = true;
+				clip.stop();
+				gameOver = true;
 		}
 	}
 	

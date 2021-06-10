@@ -121,6 +121,8 @@ public class Player extends Thread
 	
 	public void movement(PApplet app)
 	{
+		System.out.println(randomCatValue);
+		
 		velocityY += gravity;
 		
 		if(velocityY > 100)
@@ -168,15 +170,15 @@ public class Player extends Thread
 		{
 			posY = (350-(size/2));
 		}
-		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 236 && posX < 284))
+		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 232 && posX < 288))
 		{
 			posY = (333-(size/2));
 		}
-		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 436 && posX < 484))
+		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 432 && posX < 488))
 		{
 			posY = (333-(size/2));
 		}
-		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 636 && posX < 684))
+		else if(posY > (334-(size/2)) && Main.stageNum == 1 && Main.subStageNum == 3 && (posX > 632 && posX < 688))
 		{
 			posY = (333-(size/2));
 		}
@@ -196,6 +198,22 @@ public class Player extends Thread
 		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 0)
 		{
 			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 1 && (posX < 120 || posX > 773))
+		{
+			posY = (350-(size/2));
+		} 
+		else if(posY > (320-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 1 && (posX > 260 && posX < 316))
+		{
+			posY = (319-(size/2));
+		}
+		else if(posY > (224-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 1 && (posX > 460 && posX < 516))
+		{
+			posY = (223-(size/2));
+		}
+		else if(posY > (124-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 1 && (posX > 660 && posX < 716))
+		{
+			posY = (123-(size/2));
 		}
 		
 	}

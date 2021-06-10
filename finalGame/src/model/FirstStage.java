@@ -20,7 +20,7 @@ public class FirstStage extends stages
 	}
 
 	@Override
-	public void loadStage(PApplet app) 
+	public void loadStage(PApplet app)  
 	{
 		app.image(background, 0, 0);
 		

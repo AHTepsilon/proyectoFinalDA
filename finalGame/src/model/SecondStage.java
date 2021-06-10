@@ -99,6 +99,15 @@ public class SecondStage extends stages
 		case 0:
 			app.image(floor, 0, -100);
 			break;
+		case 1:
+			app.image(longGap, 0, -100);
+			
+			app.imageMode(app.CENTER);
+			platform.resize(0, 250);
+			app.image(platform, 371, 366);
+			app.image(platform, 571, 266);
+			app.image(platform, 771, 166);
+			break;
 		}
 	}
 
