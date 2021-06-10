@@ -215,7 +215,34 @@ public class Player extends Thread
 		{
 			posY = (123-(size/2));
 		}
-		
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 2 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 3 && (posX < 120 || posX > 773))
+		{
+			posY = (350-(size/2));
+		} 
+		else if(posY > (316-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 3 && (posX > 252 && posX < 302))
+		{
+			posY = (315-(size/2));
+		}
+		else if(posY > (316-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 3 && (posX > 451 && posX < 583))
+		{
+			posY = (315-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 4 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 5 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 6)
+		{
+			posY = (350-(size/2));
+		}
 	}
 	
 	public void parallax(PApplet app)

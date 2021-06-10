@@ -108,6 +108,28 @@ public class SecondStage extends stages
 			app.image(platform, 571, 266);
 			app.image(platform, 771, 166);
 			break;
+		case 2:
+			app.image(smallGapWater, 0, -100);
+			break;
+		case 3:
+			app.image(longGap, 0, -100);
+			
+			app.imageMode(app.CENTER);
+			platform.resize(0, 250);
+			app.image(platform, 359, 362);
+			app.image(platform, 559, 362);
+			app.image(platform, 600, 362);
+			app.image(platform, 641, 362);
+			break;
+		case 4:
+			app.image(smallGap, 0, -100);
+			break;
+		case 5:
+			app.image(smallGapWater, 0, -100);
+			break;
+		case 6:
+			app.image(floor, 0, -100);
+			break;
 		}
 	}
 
