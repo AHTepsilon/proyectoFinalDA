@@ -11,7 +11,7 @@ public class FirstStage extends stages
 
 	public FirstStage(PApplet app) 
 	{
-		background = app.loadImage("stageOneBack.png");
+		background = app.loadImage("stageThreeBack.png");
 		floor = app.loadImage("floor.gif");
 		smallGap = app.loadImage("smallGap.gif");
 		smallGapWater = app.loadImage("water.gif");
@@ -53,7 +53,8 @@ public class FirstStage extends stages
 				Player.posX = 0;
 				break;
 			case 6:
-				Main.subStageNum = 7;
+				Main.stageNum = 2;
+				Main.subStageNum = 0;
 				Player.posX = 0;
 				break;
 			}

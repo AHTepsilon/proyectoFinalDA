@@ -193,6 +193,11 @@ public class Player extends Thread
 			posY = (350-(size/2));
 		}
 		
+		if(posY > (351-(size/2)) && Main.stageNum == 2 && Main.subStageNum == 0)
+		{
+			posY = (350-(size/2));
+		}
+		
 	}
 	
 	public void parallax(PApplet app)

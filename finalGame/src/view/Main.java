@@ -190,6 +190,12 @@ public class Main extends PApplet
 			controls.collision(this);
 			controls.parallax(this);
 			break;
+		case 2:
+			controls.drawPlayer(this);
+			controls.movement(this);
+			controls.collision(this);
+			controls.parallax(this);
+			break;
 		}
 		
 		intface();
@@ -250,6 +256,9 @@ public class Main extends PApplet
 			break;
 		case 1:
 			controls.loadStage2(this);
+			break;
+		case 2:
+			controls.loadStage3(this);
 			break;
 		}
 	}
