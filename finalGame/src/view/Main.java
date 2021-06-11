@@ -74,11 +74,8 @@ public class Main extends PApplet
 		instScreen = loadImage("inst.png");
 		
 		itemList = new ArrayList<Items>();
-		
-		for(int i = 0; i <= 90; i++)
-		{
-			itemList.add(new Items(this));
-		}
+
+		loadItems();
 		
 		Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
 		
@@ -210,9 +207,16 @@ public class Main extends PApplet
 		gameOver();
 	}
 	
+	public void loadItems()
+	{
+		itemList.add(new Items(this, 450, 245));
+		itemList.add(new Items(this, 550, 245));
+		itemList.add(new Items(this, 650, 245));
+		itemList.add(new Items(this, 339, 245));
+	}
+	
 	public void paintItems() 
 	{
-		
 		for(int i = 0; i < itemList.size(); i++)
 		{
 			Items actual = itemList.get(i);
@@ -222,12 +226,13 @@ public class Main extends PApplet
 				switch(subStageNum)
 				{
 				case 0:
-					actual.paint(this, 450, 245);
-					actual.paint(this, 550, 245);
-					actual.paint(this, 650, 245);
+					actual.paint(this);
+					actual.paint(this);
+					actual.paint(this);
 					break;
 				case 1:
-					actual.paint(this, 339, 245);
+					actual.paint(this);
+					break;
 				}
 			}
 		}
@@ -240,7 +245,7 @@ public class Main extends PApplet
 			Items actual = itemList.get(i);
 			//System.out.println(actual.getPosX());
 			
-			if(dist(Player.posX, Player.posY, actual.getPosX(), actual.getPosY()) < 30)
+			if(dist(Player.posX, Player.posY, actual.getPosX(), actual.getPosY()) < 60)
 			{
 				itemList.remove(i);
 				score++;
