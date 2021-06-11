@@ -121,7 +121,7 @@ public class Player extends Thread
 	
 	public void movement(PApplet app)
 	{
-		//System.out.println(Main.stageNum + ", " + Main.subStageNum);
+		System.out.println(randomCatValue);
 		
 		velocityY += gravity;
 		
@@ -310,30 +310,6 @@ public class Player extends Thread
 		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 6 && (posX < 359 || posX > 565))
 		{
 			posY = (350-(size/2));
-		}
-		if(posY > (417-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && posX <= 217)
-		{
-			posY = (416-(size/2));
-		}
-		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 217 && posX < 290))
-		{
-			posY = (350-(size/2));
-		}
-		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 606 && posX < 683))
-		{
-			posY = (350-(size/2));
-		}
-		if(posY > (417-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && posX >= 683)
-		{
-			posY = (416-(size/2));
-		}
-		if(posY > (213-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 477 && posX < 564))
-		{
-			posY = (212-(size/2));
-		}
-		if(posY > (213-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 338 && posX < 422))
-		{
-			posY = (212-(size/2));
 		}
 	}
 	

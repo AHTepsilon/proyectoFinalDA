@@ -8,7 +8,7 @@ public class ThirdStage extends stages
 {
 	PApplet app;
 	PImage background;
-	PImage floor, smallGap, smallGapWater, longGap, platform, gaping;
+	PImage floor, smallGap, smallGapWater, longGap, platform;
 
 	public ThirdStage(PApplet app) 
 	{
@@ -19,7 +19,6 @@ public class ThirdStage extends stages
 		smallGapWater = app.loadImage("water.gif");
 		longGap = app.loadImage("longGap.gif");
 		platform = app.loadImage("platform.gif");
-		gaping = app.loadImage("gapAndBig.png");
 	}
 
 	@Override
@@ -74,11 +73,8 @@ public class ThirdStage extends stages
 				Player.posX = 0;
 				break;
 			case 6:
-				Main.subStageNum = 7;
-				Player.posX = 0;
-				break;
-			case 7:
 				Main.stageNum = 4;
+				Main.subStageNum = 0;
 				Player.posX = 0;
 				break;
 			}
@@ -109,10 +105,6 @@ public class ThirdStage extends stages
 				break;
 			case 6:
 				Main.subStageNum = 5;
-				Player.posX = 790;
-				break;
-			case 7:
-				Main.subStageNum = 6;
 				Player.posX = 790;
 				break;
 			}
@@ -189,10 +181,6 @@ public class ThirdStage extends stages
 			
 		case 6:
 			app.image(smallGapWater, 0, -100);
-			break;
-		
-		case 7:
-			app.image(gaping, 0, -100);
 			break;
 		}
 		
