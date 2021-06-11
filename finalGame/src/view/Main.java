@@ -259,6 +259,26 @@ public class Main extends PApplet
 		itemList.add(new Items(this, 446, 197)); //stage 1, substage 5
 		itemList.add(new Items(this, 227, 190)); //stage 1, substage 6
 		itemList.add(new Items(this, 527, 190)); //stage 1, substage 6
+		
+		itemList.add(new Items(this, 192, 197)); //stage 2, substage 1
+		itemList.add(new Items(this, 375, 161)); //stage 2, substage 1
+		itemList.add(new Items(this, 588, 66)); //stage 2, substage 1
+		itemList.add(new Items(this, 449, 190)); //stage 2, substage 2
+		itemList.add(new Items(this, 513, 153)); //stage 2, substage 3
+		itemList.add(new Items(this, 234, 198)); //stage 2, substage 4
+		itemList.add(new Items(this, 647, 198)); //stage 2, substage 4
+		itemList.add(new Items(this, 453, 186)); //stage 2, substage 5
+		
+		itemList.add(new Items(this, 192, 197));//stage 3, substage 1
+		itemList.add(new Items(this, 375, 161)); //stage 3, substage 1
+		itemList.add(new Items(this, 588, 66)); //stage 3, substage 1
+		itemList.add(new Items(this, 684, 19)); //stage 3, substage 1
+		itemList.add(new Items(this, 684, 340)); //stage 3, substage 2
+		itemList.add(new Items(this, 523, 130)); //stage 3, substage 3
+		itemList.add(new Items(this, 723, 130)); //stage 3, substage 3
+		itemList.add(new Items(this, 375, 161)); //stage 3, substage 5
+		itemList.add(new Items(this, 588, 66)); //stage 3, substage 5
+		itemList.add(new Items(this, 447, 72)); //stage 3, substage 6
 	}
 	
 	public void paintItems() 
@@ -299,6 +319,31 @@ public class Main extends PApplet
 				case 6:
 					itemList.get(11).paint(this);
 					itemList.get(12).paint(this);
+					break;
+				}
+			}
+			
+			if(stageNumTemporal == 2)
+			{
+				switch(subStageNumTemporal)
+				{
+				case 1:
+					itemList.get(13).paint(this);
+					itemList.get(14).paint(this);
+					itemList.get(15).paint(this);
+					break;
+				case 2:
+					itemList.get(16).paint(this);
+					break;
+				case 3:
+					itemList.get(17).paint(this);
+					break;
+				case 4:
+					itemList.get(18).paint(this);
+					itemList.get(19).paint(this);
+					break;
+				case 5:
+					itemList.get(20).paint(this);
 					break;
 				}
 			}
@@ -393,6 +438,63 @@ public class Main extends PApplet
 					if(dist(Player.posX, Player.posY, itemList.get(12).getPosX(), itemList.get(12).getPosY()) < 50)
 					{
 						itemList.get(12).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				}
+			}
+			
+			if(stageNum == 2)
+			{
+				switch(subStageNum)
+				{
+				case 1:
+					if(dist(Player.posX, Player.posY, itemList.get(13).getPosX(), itemList.get(13).getPosY()) < 50)
+					{
+						itemList.get(13).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(14).getPosX(), itemList.get(14).getPosY()) < 50)
+					{
+						itemList.get(14).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(15).getPosX(), itemList.get(15).getPosY()) < 50)
+					{
+						itemList.get(15).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 2:
+					if(dist(Player.posX, Player.posY, itemList.get(16).getPosX(), itemList.get(16).getPosY()) < 50)
+					{
+						itemList.get(16).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 3:
+					if(dist(Player.posX, Player.posY, itemList.get(17).getPosX(), itemList.get(17).getPosY()) < 50)
+					{
+						itemList.get(17).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 4:
+					if(dist(Player.posX, Player.posY, itemList.get(18).getPosX(), itemList.get(18).getPosY()) < 50)
+					{
+						itemList.get(18).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(19).getPosX(), itemList.get(19).getPosY()) < 50)
+					{
+						itemList.get(19).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 5:
+					if(dist(Player.posX, Player.posY, itemList.get(20).getPosX(), itemList.get(20).getPosY()) < 50)
+					{
+						itemList.get(20).setPosX(-5000);
 						score += 100;
 					}
 					break;
