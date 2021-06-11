@@ -347,6 +347,33 @@ public class Main extends PApplet
 					break;
 				}
 			}
+			
+			if(stageNumTemporal == 3)
+			{
+				switch(subStageNumTemporal)
+				{
+				case 1:
+					itemList.get(21).paint(this);
+					itemList.get(22).paint(this);
+					itemList.get(23).paint(this);
+					itemList.get(24).paint(this);
+					break;
+				case 2:
+					itemList.get(25).paint(this);
+					break;
+				case 3:
+					itemList.get(26).paint(this);
+					itemList.get(27).paint(this);
+					break;
+				case 5:
+					itemList.get(28).paint(this);
+					itemList.get(29).paint(this);
+					break;
+				case 7:
+					itemList.get(30).paint(this);
+					break;
+				}
+			}
 		}
 	}
 	
@@ -495,6 +522,73 @@ public class Main extends PApplet
 					if(dist(Player.posX, Player.posY, itemList.get(20).getPosX(), itemList.get(20).getPosY()) < 50)
 					{
 						itemList.get(20).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				}
+			}
+			
+			if(stageNum == 3)
+			{
+				switch(subStageNum)
+				{
+				case 1:
+					if(dist(Player.posX, Player.posY, itemList.get(21).getPosX(), itemList.get(21).getPosY()) < 50)
+					{
+						itemList.get(21).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(22).getPosX(), itemList.get(22).getPosY()) < 50)
+					{
+						itemList.get(22).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(23).getPosX(), itemList.get(23).getPosY()) < 50)
+					{
+						itemList.get(23).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(24).getPosX(), itemList.get(24).getPosY()) < 50)
+					{
+						itemList.get(24).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 2:
+					if(dist(Player.posX, Player.posY, itemList.get(25).getPosX(), itemList.get(25).getPosY()) < 50)
+					{
+						itemList.get(25).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 3:
+					if(dist(Player.posX, Player.posY, itemList.get(26).getPosX(), itemList.get(26).getPosY()) < 50)
+					{
+						itemList.get(26).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(27).getPosX(), itemList.get(27).getPosY()) < 50)
+					{
+						itemList.get(27).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 5:
+					if(dist(Player.posX, Player.posY, itemList.get(28).getPosX(), itemList.get(28).getPosY()) < 50)
+					{
+						itemList.get(28).setPosX(-5000);
+						score += 100;
+					}
+					if(dist(Player.posX, Player.posY, itemList.get(29).getPosX(), itemList.get(29).getPosY()) < 50)
+					{
+						itemList.get(29).setPosX(-5000);
+						score += 100;
+					}
+					break;
+				case 7:
+					if(dist(Player.posX, Player.posY, itemList.get(30).getPosX(), itemList.get(30).getPosY()) < 50)
+					{
+						itemList.get(30).setPosX(-5000);
 						score += 100;
 					}
 					break;
