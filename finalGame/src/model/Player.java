@@ -243,6 +243,74 @@ public class Player extends Thread
 		{
 			posY = (350-(size/2));
 		}
+		
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 0)
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 1 && (posX < 120 || posX > 773))
+		{
+			posY = (350-(size/2));
+		} 
+		else if(posY > (320-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 1 && (posX > 250 && posX < 326))
+		{
+			posY = (319-(size/2));
+		}
+		else if(posY > (224-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 1 && (posX > 450 && posX < 526))
+		{
+			posY = (223-(size/2));
+		}
+		else if(posY > (124-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 1 && (posX > 650 && posX < 726))
+		{
+			posY = (123-(size/2));
+		}
+		else if(posY > (26-(size/2)) && (posY < (28-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 1 && (posX > 450 && posX < 526)))
+		{
+			posY = (25-(size/2));
+		}
+		
+		if(posY > (489-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 2 && posX > 666)
+		{
+			posY = (488-(size/2));
+		}
+		if(posY > (489-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 3 && posX < 113)
+		{
+			posY = (488-(size/2));
+		}
+		if(posY > (389-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 3 && posX > 164 && posX < 372)
+		{
+			posY = (388-(size/2));
+		}
+		if(posY > (289-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 3 && posX > 413)
+		{
+			posY = (288-(size/2));
+		}
+		
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 4 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
+		
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 5 && (posX < 120 || posX > 773))
+		{
+			posY = (350-(size/2));
+		} 
+		else if(posY > (320-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 5 && (posX > 250 && posX < 326))
+		{
+			posY = (319-(size/2));
+		}
+		else if(posY > (224-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 5 && (posX > 450 && posX < 526))
+		{
+			posY = (223-(size/2));
+		}
+		else if(posY > (124-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 5 && (posX > 650 && posX < 726))
+		{
+			posY = (123-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 6 && (posX < 359 || posX > 565))
+		{
+			posY = (350-(size/2));
+		}
 	}
 	
 	public void parallax(PApplet app)

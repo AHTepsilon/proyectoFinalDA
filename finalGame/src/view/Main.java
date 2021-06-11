@@ -196,6 +196,12 @@ public class Main extends PApplet
 			controls.collision(this);
 			controls.parallax(this);
 			break;
+		case 3:
+			controls.drawPlayer(this);
+			controls.movement(this);
+			controls.collision(this);
+			controls.parallax(this);
+			break;
 		}
 		
 		intface();
@@ -260,6 +266,18 @@ public class Main extends PApplet
 		case 2:
 			controls.loadStage3(this);
 			break;
+		case 3:
+			controls.loadStage4(this);
+			break;
+		case 4:
+			imageMode(CORNER);
+			image(gameOverScreen, 0, 0);
+		
+			textAlign(CENTER);
+			fill(255);
+			textSize(30);
+			text("You Win!", 400, 200);
+			break;
 		}
 	}
 	
@@ -279,9 +297,6 @@ public class Main extends PApplet
 				clip2.start();
 			}
 		}
-		
-		if(stageNum == 1)
-		{
 			if(key == '1')
 			{
 				subStageNum = 1;
@@ -298,7 +313,14 @@ public class Main extends PApplet
 			{
 				subStageNum = 4;
 			}
-		}
+			if(key == '5')
+			{
+				subStageNum = 5;
+			}
+			if(key == '6')
+			{
+				subStageNum = 6;
+			}
 	}
 	
 	public void mousePressed()
@@ -308,7 +330,7 @@ public class Main extends PApplet
 	
 	public void gameOver()
 	{
-		if(Player.posY > 500)
+		if(Player.posY > 500 && !(stageNum == 3 && subStageNum == 2))
 		{
 				imageMode(CORNER);
 				image(gameOverScreen, 0, 0);

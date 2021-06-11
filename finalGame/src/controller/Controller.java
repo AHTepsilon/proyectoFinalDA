@@ -3,6 +3,7 @@ package controller;
 import model.FirstStage;
 import model.Player;
 import model.SecondStage;
+import model.ThirdStage;
 import model.stages;
 import model.startScreen;
 import processing.core.PApplet;
@@ -13,6 +14,7 @@ public class Controller
 	startScreen screenOne;
 	FirstStage stageOne;
 	SecondStage stageTwo;
+	ThirdStage stageThree;
 	PApplet app;
 	
 
@@ -22,6 +24,7 @@ public class Controller
 		screenOne = new startScreen(app);
 		stageOne = new FirstStage(app);
 		stageTwo = new SecondStage(app);
+		stageThree = new ThirdStage(app);
 	}
 	
 	public void drawPlayer(PApplet app)
@@ -78,6 +81,11 @@ public class Controller
 	public void loadStage3(PApplet app)
 	{
 		stageTwo.loadStage(app);
+	}
+	
+	public void loadStage4(PApplet app)
+	{
+		stageThree.loadStage(app);
 	}
 
 }
