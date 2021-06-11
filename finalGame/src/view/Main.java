@@ -238,7 +238,7 @@ public class Main extends PApplet
 		for(int i = 0; i < itemList.size(); i++)
 		{
 			Items actual = itemList.get(i);
-			System.out.println(actual.getPosX());
+			//System.out.println(actual.getPosX());
 			
 			if(dist(Player.posX, Player.posY, actual.getPosX(), actual.getPosY()) < 30)
 			{
