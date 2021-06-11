@@ -11,15 +11,18 @@ public class Items
 	PImage cake, sushi, yarn, lasagna, item;
 	int posX, posY;
 	
-	public Items(PApplet app) 
+	public Items(PApplet app, int posX, int posY) 
 	{
+		this.posX = posX;
+		this.posY = posY;
+		
 		cake = app.loadImage("itemCake.png");
 		sushi = app.loadImage("itemSushi.png");
 		yarn = app.loadImage("itemYarnBall.png");
 		lasagna = app.loadImage("itemLasagna.png");
 	}
 	
-	public void paint(PApplet app, int posX, int posY)
+	public void paint(PApplet app)
 	{
 		switch(Player.randomCatValue)
 		{

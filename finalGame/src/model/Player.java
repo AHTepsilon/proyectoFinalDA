@@ -121,7 +121,7 @@ public class Player extends Thread
 	
 	public void movement(PApplet app)
 	{
-		System.out.println(randomCatValue);
+		//System.out.println(velocityY);
 		
 		velocityY += gravity;
 		
@@ -311,6 +311,30 @@ public class Player extends Thread
 		{
 			posY = (350-(size/2));
 		}
+		if(posY > (417-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && posX <= 217)
+		{
+			posY = (416-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 217 && posX < 290))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (351-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 606 && posX < 683))
+		{
+			posY = (350-(size/2));
+		}
+		if(posY > (417-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && posX >= 683)
+		{
+			posY = (416-(size/2));
+		}
+		if(posY > (213-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 477 && posX < 564))
+		{
+			posY = (212-(size/2));
+		}
+		if(posY > (213-(size/2)) && Main.stageNum == 3 && Main.subStageNum == 7 && (posX > 338 && posX < 422))
+		{
+			posY = (212-(size/2));
+		}
 	}
 	
 	public void parallax(PApplet app)
@@ -366,7 +390,7 @@ public class Player extends Thread
 				rightKey = 1;
 			}
 			
-			if(app.keyCode == app.UP && velocityY > 0)
+			if(app.keyCode == app.UP && velocityY > 20)
 			{
 				upKey = 1;
 				saltoBloqueado=false;
