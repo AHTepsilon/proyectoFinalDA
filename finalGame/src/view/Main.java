@@ -159,7 +159,7 @@ public class Main extends PApplet
 	@Override
 	public void draw() //void Update
 	{
-		System.out.println(mouseX + ", " + mouseY);
+		//System.out.println(mouseX + ", " + mouseY);
 		noStroke();
 		rectMode(CORNER);
 		imageMode(CORNER);
@@ -232,7 +232,7 @@ public class Main extends PApplet
 			text(year, 10, 84);
 
 			date = " /" + day + " " + month + " " + year + "/";
-			System.out.println(date);
+			//System.out.println(date);
 			userName = user.getStringValue();
 			user.setVisible(true);
 			break;
@@ -659,21 +659,35 @@ public class Main extends PApplet
 				
 				if(stageNum == 4)
 				{
-				lines[lines.length - 1] = str(score); // agrega los puntajes
+				//lines[lines.length - 1] = str(score); // agrega los puntajes
+//
+//				for (int i = lines.length - 1; i > 0; i--) {
+//					if (parseInt(lines[i]) > parseInt(lines[i - 1])) // agrega solo los puntajes mayores
+//					{
+//						//String setScoreLower = lines[i - 1]; // lo ordena de mayor a menor
+//						lines[i - 1] = lines[i] + " " + userName + " " + date;
+//						//lines[i] = setScoreLower;
+//
+					//}
+					
+//					lines[0] = "hola0";
+//					lines[1] = "hola1";
+//					lines[2] = "hola2";
+//					lines[3] = "hola3";
+//					lines[4] = "hola4";
 
-				for (int i = lines.length - 1; i > 0; i--) {
-					if (parseInt(lines[i]) > parseInt(lines[i - 1])) // agrega solo los puntajes mayores
+					String scoreStrings[] = {str(score), lines[0], lines[1], lines[2], lines[3]}; 
+					
+					for(int i = 0; i < lines.length; i++)
 					{
-						String setScoreLower = lines[i - 1]; // lo ordena de mayor a menor
-						lines[i - 1] = lines[i] + " " + userName + " " + date;
-						lines[i] = setScoreLower;
-
+						lines[i] = scoreStrings[i];
 					}
+					
+					System.out.println(lines.length);
+					saveStrings("./data/highScore.txt", scoreStrings); // guarda los puntajes
+				//}
 
-					saveStrings("./data/highScore.txt", lines); // guarda los puntajes
-				}
-
-				sort(lines); // sort?
+				//sort(lines); // sort?
 				}
 			}
 		}
@@ -700,6 +714,10 @@ public class Main extends PApplet
 			if(key == '6')
 			{
 				subStageNum = 6;
+			}
+			if(key == '9')
+			{
+				stageNum = 4;
 			}
 	}
 	
