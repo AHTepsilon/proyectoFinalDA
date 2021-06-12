@@ -225,11 +225,11 @@ public class Main extends PApplet
 			int y = year(); // 2003, 2004, 2005, etc.
 
 			String day = String.valueOf(d);
-			text(day, 10, 28);
+			//text(day, 10, 28);
 			String month = String.valueOf(m);
-			text(month, 10, 56);
+			//text(month, 10, 56);
 			String year = String.valueOf(y);
-			text(year, 10, 84);
+			//text(year, 10, 84);
 
 			date = " /" + day + " " + month + " " + year + "/";
 			//System.out.println(date);
@@ -670,13 +670,7 @@ public class Main extends PApplet
 //
 					//}
 					
-//					lines[0] = "hola0";
-//					lines[1] = "hola1";
-//					lines[2] = "hola2";
-//					lines[3] = "hola3";
-//					lines[4] = "hola4";
-
-					String scoreStrings[] = {str(score), lines[0], lines[1], lines[2], lines[3]}; 
+					String scoreStrings[] = {str(score) + " " + userName + " " + date, lines[0], lines[1], lines[2], lines[3]}; 
 					
 					for(int i = 0; i < lines.length; i++)
 					{
@@ -784,8 +778,6 @@ public class Main extends PApplet
 				fill(255);
 				textSize(30);
 				text("Game Over", 400, 200);
-			
-				clip.stop();
 				gameOver = true;
 		}
 	}
