@@ -99,7 +99,7 @@ public class Main extends PApplet {
 		landscapeX = 0;
 		stageNum = -1;
 		subStageNum = 0;
-		score = 100;
+		score = 0;
 
 		characterX = 31;
 		characterY = 324;
@@ -265,29 +265,6 @@ public class Main extends PApplet {
 			textSize(20);
 			text("Type your name and press the up arrow key", 394, 350);
 			text("To sort the scores press the A, S, D, W keys", 394, 390);
-
-			/////////////// TIMER////////////
-			if (s <= 59) {
-
-				s = s + 1;
-				text(h + " : " + mt, 100, 400);
-
-			} else {
-
-				mt = mt + 1;
-				s = 0;
-			}
-			if (mt <= 59) {
-
-			} else {
-
-				h = h + 1;
-				mt = 0;
-			}
-			///////////// TIMER//////////////
-			
-			
-
 			break;
 		}
 
@@ -658,7 +635,7 @@ public class Main extends PApplet {
 //
 					// }
 
-					String scoreStrings[] = { str(score) + " " + userName + " " + date, lines[0], lines[1], lines[2],
+					String scoreStrings[] = { str(score) + " " + userName + " " + date + " " + h + " : " + mt, lines[0], lines[1], lines[2],
 							lines[3] };
 
 					for (int i = 0; i < lines.length; i++) {
@@ -799,6 +776,26 @@ public class Main extends PApplet {
 			textSize(16);
 			text("stage " + stageNum, 400, 30);
 			text("score " + score, 680, 30);
+			
+			/////////////// TIMER////////////
+			if (s <= 59) {
+
+				s = s + 1;
+				text(h + " : " + mt, 100, 30);
+
+			} else {
+
+				mt = mt + 1;
+				s = 0;
+			}
+			if (mt <= 59) {
+
+			} else {
+
+				h = h + 1;
+				mt = 0;
+			}
+			///////////// TIMER//////////////
 
 		}
 	}
