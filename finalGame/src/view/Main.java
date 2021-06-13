@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.*;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -88,11 +87,7 @@ public class Main extends PApplet {
 		saveScore = new String[5];
 		saveDate = new String[5];
 		
-		
-		
 		list = new ArrayList<>();
-		
-		separateScores();
 
 		///// TIMER///////
 		s = 0;
@@ -102,7 +97,7 @@ public class Main extends PApplet {
 
 		// background = loadImage("land.jpg");
 		landscapeX = 0;
-		stageNum = 4;
+		stageNum = -1;
 		subStageNum = 0;
 		score = 0;
 
@@ -128,43 +123,43 @@ public class Main extends PApplet {
 
 		DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
 
-//		try
-//		{
-//			clip = (Clip)mixer.getLine(dataInfo);
-//			clip2 = (Clip)mixer.getLine(dataInfo);
-//		}
-//		catch(LineUnavailableException err)
-//		{
-//			err.printStackTrace();
-//		}
-//		
-//		try
-//		{
-//			URL soundURL = Main.class.getResource("/view/theme.wav");
-//			URL soundsURL2 = Main.class.getResource("/view/jump.wav");
-//			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
-//			AudioInputStream audioStreamTwo = AudioSystem.getAudioInputStream(soundsURL2);
-//			clip.open(audioStream);
-//			clip2.open(audioStreamTwo);
-//		}
-//		catch(LineUnavailableException lue)
-//		{
-//			lue.printStackTrace();
-//		}
-//		catch(UnsupportedAudioFileException uafe)
-//		{
-//			uafe.printStackTrace();
-//		}
-//		catch(IOException ioe)
-//		{
-//			ioe.printStackTrace();
-//		}
-//		catch(NullPointerException npe)
-//		{
-//			npe.printStackTrace();
-//		}
-//		
-//		clip.start();
+		try
+		{
+			clip = (Clip)mixer.getLine(dataInfo);
+			clip2 = (Clip)mixer.getLine(dataInfo);
+		}
+		catch(LineUnavailableException err)
+		{
+			err.printStackTrace();
+		}
+		
+		try
+		{
+			URL soundURL = Main.class.getResource("/view/theme.wav");
+			URL soundsURL2 = Main.class.getResource("/view/jump.wav");
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+			AudioInputStream audioStreamTwo = AudioSystem.getAudioInputStream(soundsURL2);
+			clip.open(audioStream);
+			clip2.open(audioStreamTwo);
+		}
+		catch(LineUnavailableException lue)
+		{
+			lue.printStackTrace();
+		}
+		catch(UnsupportedAudioFileException uafe)
+		{
+			uafe.printStackTrace();
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+		catch(NullPointerException npe)
+		{
+			npe.printStackTrace();
+		}
+		
+		clip.start();
 
 		controls = new Controller(this);
 
@@ -185,7 +180,7 @@ public class Main extends PApplet {
 		noStroke();
 		rectMode(CORNER);
 		imageMode(CORNER);
-		
+
 		loadStages();
 
 		switch (stageNum) {
@@ -645,10 +640,8 @@ public class Main extends PApplet {
 
 					for (int i = 0; i < lines.length; i++) {
 						lines[i] = scoreStrings[i];
-						
 					}
 
-					
 					System.out.println(lines.length);
 					saveStrings("./data/highScore.txt", scoreStrings); // guarda los puntajes
 					// }
@@ -686,33 +679,80 @@ public class Main extends PApplet {
 
 		switch (key) {
 		
-		//sort score 
-		case 'a':
-			
-			for (int i = 0; i < lines.length; i++) {
-				
-				scores=reverse(lines);
-				 
-			}
+		case 'b':
+			//separateScores();
 
-			saveStrings("./data/highScore.txt", scores);
-			System.out.println("sort score");
 			
-			break;
+//			sort(lines);
+//			String scoreStrings[] = { str(score) + " " + userName + " " + date, lines[0], lines[1], lines[2],
+//					lines[3] };
+//
+//			for (int i = 0; i < lines.length; i++) {
+//				String user = userName;
+//				String score1 = str(score);
+//				String date1 = date;
+//				
+//				//String time = timer ;
+//				
+//				String line = score1 + " " + user + " " + date1 ;
+//				
+//				saveName[i] = line;
+//			}
+//
+//			System.out.println(lines.length);
+//			saveStrings("./data/SaveId.txt", saveName); // guarda los puntajes
 			
-		case 's':
-			
-		
-		
-		break;
+//			Collections.sort(list);
 
-		case 'd':
+//			for (int i = 0; i < list.size(); i++) {
+//				
+//                String score1 = str(score);
+//				
+//				String user = userName;
+//				
+//				String date1 = date;
+//				
+//				//String time = timer ;
+//				
+//				String line = score1 + " " + user + " " + date1 ;
+//				
+//				saveName[i] = line;
+//				
+//				
+//			}
+//			
+//			saveStrings("./data/SaveId.txt", saveName);
+//			System.out.println("sort name");
 
+//		case 's':
+//
+//			sort(lines);
+//
+//			for (int i = 0; i < lines.length; i++) {
+//
+//				String line = date + " " + userName + " " + lines;
+//
+//				saveDate[i] = line;
+//
+//				/// saveStrings(" ", saveDate);
+//			}
+//
+//		case 'd':
+//
+//			sort(lines);
+//
+//			for (int i = 0; i < lines.length; i++) {
+//
+//				String line = lines + " " + userName + " " + date;
+//
+//				saveScore[i] = line;
+//
+//				// saveStrings(" ", saveScore);
+//			}
 
 			break;
 		}
 	}
-	
 
 	public void mousePressed() {
 
@@ -728,6 +768,8 @@ public class Main extends PApplet {
 			textSize(30);
 			text("Game Over", 400, 200);
 			gameOver = true;
+			
+			clip.stop();
 		}
 	}
 
@@ -738,8 +780,6 @@ public class Main extends PApplet {
 			text("score " + score, 680, 30);
 			
 			/////////////// TIMER////////////
-			if (stageNum > 0&&stageNum > 4) {
-			
 			if (s <= 59) {
 
 				s = s + 1;
@@ -758,7 +798,7 @@ public class Main extends PApplet {
 				mt = 0;
 			}
 			///////////// TIMER//////////////
-			}
+
 		}
 	}
 
@@ -774,12 +814,12 @@ public class Main extends PApplet {
 			String score = Line1[0];
 			String user = Line1[1];
 			String date = Line1[2];
-			String time = Line1[3];
+			//String time = Line1[3];
 			
 			list.add(score) ;
 			list.add(user) ;
 			list.add(date) ;
-			list.add(time) ;
+			//list.add(time) ;
 			System.out.println(list);
 			
 			
