@@ -112,13 +112,16 @@ public class Main extends PApplet {
 
 		loadItems();
 
+		//receives the information about the sound devices in the computer
 		Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
 
+		//prints the name of the audio devices
 		/*
 		 * for(Mixer.Info info : mixerInfo) { System.out.println(info.getName() +
 		 * "-------" + info.getDescription()); }
 		 */
 
+		//calls the default sound system of the computer
 		mixer = AudioSystem.getMixer(mixerInfo[0]);
 
 		DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
@@ -135,11 +138,11 @@ public class Main extends PApplet {
 		
 		try
 		{
-			URL soundURL = Main.class.getResource("/view/theme.wav");
+			URL soundURL = Main.class.getResource("/view/theme.wav"); //obtains the URL of the audio source needed
 			URL soundsURL2 = Main.class.getResource("/view/jump.wav");
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL); //calls the audio device and initialized the audio clip
 			AudioInputStream audioStreamTwo = AudioSystem.getAudioInputStream(soundsURL2);
-			clip.open(audioStream);
+			clip.open(audioStream); //accesses the audio clip
 			clip2.open(audioStreamTwo);
 		}
 		catch(LineUnavailableException lue)
@@ -159,10 +162,11 @@ public class Main extends PApplet {
 			npe.printStackTrace();
 		}
 		
-		clip.start();
+		clip.start(); //starts to play the audio clip
 
 		controls = new Controller(this);
 
+		//useless, do not delete tho
 		if (keyPressed) {
 			if (key == CODED) {
 				if (keyCode == UP) {
@@ -614,7 +618,7 @@ public class Main extends PApplet {
 	}
 
 	public void parallax() {
-
+		//was supposed to be used to move the screen but it was shown to be very difficult
 	}
 
 	public void keyPressed() {
@@ -624,16 +628,6 @@ public class Main extends PApplet {
 			if (keyCode == UP) {
 
 				if (stageNum == 4) {
-					// lines[lines.length - 1] = str(score); // agrega los puntajes
-//
-//				for (int i = lines.length - 1; i > 0; i--) {
-//					if (parseInt(lines[i]) > parseInt(lines[i - 1])) // agrega solo los puntajes mayores
-//					{
-//						//String setScoreLower = lines[i - 1]; // lo ordena de mayor a menor
-//						lines[i - 1] = lines[i] + " " + userName + " " + date;
-//						//lines[i] = setScoreLower;
-//
-					// }
 
 					String scoreStrings[] = { str(score) + " " + userName + " " + date + " " + h + " : " + mt, lines[0], lines[1], lines[2],
 							lines[3] };
@@ -679,77 +673,17 @@ public class Main extends PApplet {
 
 		switch (key) {
 		
-		case 'b':
-			//separateScores();
+		//sort score 
+				case 'a':
+					
+					for (int i = 0; i < lines.length; i++) {
+						
+						scores=reverse(lines);
+						 
+					}
 
-			
-//			sort(lines);
-//			String scoreStrings[] = { str(score) + " " + userName + " " + date, lines[0], lines[1], lines[2],
-//					lines[3] };
-//
-//			for (int i = 0; i < lines.length; i++) {
-//				String user = userName;
-//				String score1 = str(score);
-//				String date1 = date;
-//				
-//				//String time = timer ;
-//				
-//				String line = score1 + " " + user + " " + date1 ;
-//				
-//				saveName[i] = line;
-//			}
-//
-//			System.out.println(lines.length);
-//			saveStrings("./data/SaveId.txt", saveName); // guarda los puntajes
-			
-//			Collections.sort(list);
-
-//			for (int i = 0; i < list.size(); i++) {
-//				
-//                String score1 = str(score);
-//				
-//				String user = userName;
-//				
-//				String date1 = date;
-//				
-//				//String time = timer ;
-//				
-//				String line = score1 + " " + user + " " + date1 ;
-//				
-//				saveName[i] = line;
-//				
-//				
-//			}
-//			
-//			saveStrings("./data/SaveId.txt", saveName);
-//			System.out.println("sort name");
-
-//		case 's':
-//
-//			sort(lines);
-//
-//			for (int i = 0; i < lines.length; i++) {
-//
-//				String line = date + " " + userName + " " + lines;
-//
-//				saveDate[i] = line;
-//
-//				/// saveStrings(" ", saveDate);
-//			}
-//
-//		case 'd':
-//
-//			sort(lines);
-//
-//			for (int i = 0; i < lines.length; i++) {
-//
-//				String line = lines + " " + userName + " " + date;
-//
-//				saveScore[i] = line;
-//
-//				// saveStrings(" ", saveScore);
-//			}
-
+					saveStrings("./data/highScore.txt", scores);
+					System.out.println("sort score");
 			break;
 		}
 	}
@@ -800,31 +734,6 @@ public class Main extends PApplet {
 			///////////// TIMER//////////////
 
 		}
-	}
-
-	public void separateScores() {
-		
-		scores = loadStrings("./data/highScore.txt");
-		
-		
-		for (int i = 0; i < scores.length; i++) {
-			
-			String[] Line1 = scores[i].split (" ");
-			
-			String score = Line1[0];
-			String user = Line1[1];
-			String date = Line1[2];
-			//String time = Line1[3];
-			
-			list.add(score) ;
-			list.add(user) ;
-			list.add(date) ;
-			//list.add(time) ;
-			System.out.println(list);
-			
-			
-		}
-		
 	}
 	
 	
