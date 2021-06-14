@@ -264,7 +264,7 @@ public class Main extends PApplet {
 			fill(32, 48, 99);
 			textSize(20);
 			text("Type your name and press the up arrow key", 394, 350);
-			text("To sort the scores press the A, S, D, W keys", 394, 390);
+			text("To sort the scores press the S key", 394, 390);
 			break;
 		}
 
