@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.*;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -47,6 +48,7 @@ public class Main extends PApplet {
 	boolean isScreenInst;
 
 	int score;
+	String timer;
 
 	ArrayList<Items> itemList;
 
@@ -61,7 +63,7 @@ public class Main extends PApplet {
 	////////////Sort
 	
 	private ArrayList<String> list;
-	private String[] saveName, saveDate, saveScore, scores;
+	private String[] saveName, saveDate, saveScore, scores, users;
 	/////////////////////
 
     ////TIMER////
@@ -86,8 +88,12 @@ public class Main extends PApplet {
 		saveName = new String[5];
 		saveScore = new String[5];
 		saveDate = new String[5];
+		users=new String[5];
+		
+		
 		
 		list = new ArrayList<>();
+	
 
 		///// TIMER///////
 		s = 0;
@@ -112,61 +118,57 @@ public class Main extends PApplet {
 
 		loadItems();
 
-		//receives the information about the sound devices in the computer
 		Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
 
-		//prints the name of the audio devices
 		/*
 		 * for(Mixer.Info info : mixerInfo) { System.out.println(info.getName() +
 		 * "-------" + info.getDescription()); }
 		 */
 
-		//calls the default sound system of the computer
 		mixer = AudioSystem.getMixer(mixerInfo[0]);
 
 		DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
 
-		try
-		{
-			clip = (Clip)mixer.getLine(dataInfo);
-			clip2 = (Clip)mixer.getLine(dataInfo);
-		}
-		catch(LineUnavailableException err)
-		{
-			err.printStackTrace();
-		}
-		
-		try
-		{
-			URL soundURL = Main.class.getResource("/view/theme.wav"); //obtains the URL of the audio source needed
-			URL soundsURL2 = Main.class.getResource("/view/jump.wav");
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL); //calls the audio device and initialized the audio clip
-			AudioInputStream audioStreamTwo = AudioSystem.getAudioInputStream(soundsURL2);
-			clip.open(audioStream); //accesses the audio clip
-			clip2.open(audioStreamTwo);
-		}
-		catch(LineUnavailableException lue)
-		{
-			lue.printStackTrace();
-		}
-		catch(UnsupportedAudioFileException uafe)
-		{
-			uafe.printStackTrace();
-		}
-		catch(IOException ioe)
-		{
-			ioe.printStackTrace();
-		}
-		catch(NullPointerException npe)
-		{
-			npe.printStackTrace();
-		}
-		
-		clip.start(); //starts to play the audio clip
+//		try
+//		{
+//			clip = (Clip)mixer.getLine(dataInfo);
+//			clip2 = (Clip)mixer.getLine(dataInfo);
+//		}
+//		catch(LineUnavailableException err)
+//		{
+//			err.printStackTrace();
+//		}
+//		
+//		try
+//		{
+//			URL soundURL = Main.class.getResource("/view/theme.wav");
+//			URL soundsURL2 = Main.class.getResource("/view/jump.wav");
+//			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+//			AudioInputStream audioStreamTwo = AudioSystem.getAudioInputStream(soundsURL2);
+//			clip.open(audioStream);
+//			clip2.open(audioStreamTwo);
+//		}
+//		catch(LineUnavailableException lue)
+//		{
+//			lue.printStackTrace();
+//		}
+//		catch(UnsupportedAudioFileException uafe)
+//		{
+//			uafe.printStackTrace();
+//		}
+//		catch(IOException ioe)
+//		{
+//			ioe.printStackTrace();
+//		}
+//		catch(NullPointerException npe)
+//		{
+//			npe.printStackTrace();
+//		}
+//		
+//		clip.start();
 
 		controls = new Controller(this);
 
-		//useless, do not delete tho
 		if (keyPressed) {
 			if (key == CODED) {
 				if (keyCode == UP) {
@@ -184,7 +186,7 @@ public class Main extends PApplet {
 		noStroke();
 		rectMode(CORNER);
 		imageMode(CORNER);
-
+		
 		loadStages();
 
 		switch (stageNum) {
@@ -268,7 +270,7 @@ public class Main extends PApplet {
 			fill(32, 48, 99);
 			textSize(20);
 			text("Type your name and press the up arrow key", 394, 350);
-			text("To sort the scores press the S key", 394, 390);
+			text("To sort the scores press the A, S, D, W keys", 394, 390);
 			break;
 		}
 
@@ -618,7 +620,7 @@ public class Main extends PApplet {
 	}
 
 	public void parallax() {
-		//was supposed to be used to move the screen but it was shown to be very difficult
+
 	}
 
 	public void keyPressed() {
@@ -628,14 +630,26 @@ public class Main extends PApplet {
 			if (keyCode == UP) {
 
 				if (stageNum == 4) {
+					// lines[lines.length - 1] = str(score); // agrega los puntajes
+//
+//				for (int i = lines.length - 1; i > 0; i--) {
+//					if (parseInt(lines[i]) > parseInt(lines[i - 1])) // agrega solo los puntajes mayores
+//					{
+//						//String setScoreLower = lines[i - 1]; // lo ordena de mayor a menor
+//						lines[i - 1] = lines[i] + " " + userName + " " + date;
+//						//lines[i] = setScoreLower;
+//
+					// }
 
-					String scoreStrings[] = { str(score) + " " + userName + " " + date + " " + h + " : " + mt, lines[0], lines[1], lines[2],
+					String scoreStrings[] = { str(score) + " " + userName + " " + date + " " +timer, lines[0], lines[1], lines[2],
 							lines[3] };
 
 					for (int i = 0; i < lines.length; i++) {
 						lines[i] = scoreStrings[i];
+						
 					}
 
+					
 					System.out.println(lines.length);
 					saveStrings("./data/highScore.txt", scoreStrings); // guarda los puntajes
 					// }
@@ -674,19 +688,17 @@ public class Main extends PApplet {
 		switch (key) {
 		
 		//sort score 
-				case 'a':
-					
-					for (int i = 0; i < lines.length; i++) {
-						
-						scores=reverse(lines);
-						 
-					}
-
-					saveStrings("./data/highScore.txt", scores);
-					System.out.println("sort score");
+		case 'a':
+	
+			scores=reverse(lines);
+			saveStrings("./data/highScore.txt", scores);
+			System.out.println("sort score");
+			
 			break;
+			
 		}
 	}
+	
 
 	public void mousePressed() {
 
@@ -702,8 +714,6 @@ public class Main extends PApplet {
 			textSize(30);
 			text("Game Over", 400, 200);
 			gameOver = true;
-			
-			clip.stop();
 		}
 	}
 
@@ -713,7 +723,11 @@ public class Main extends PApplet {
 			text("stage " + stageNum, 400, 30);
 			text("score " + score, 680, 30);
 			
+			 timer=(h + " : " + mt);
+			
 			/////////////// TIMER////////////
+			if (stageNum > 0&&stageNum > 4) {
+			
 			if (s <= 59) {
 
 				s = s + 1;
@@ -732,9 +746,11 @@ public class Main extends PApplet {
 				mt = 0;
 			}
 			///////////// TIMER//////////////
-
+			}
 		}
 	}
+
+
 	
 	
 }

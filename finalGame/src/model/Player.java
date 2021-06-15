@@ -71,7 +71,6 @@ public class Player extends Thread
 		}
 	}
 	
-	//doesn't work
 	public void run()
 	{
 		jumpable *= -1;
